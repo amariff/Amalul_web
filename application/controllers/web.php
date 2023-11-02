@@ -7,6 +7,18 @@ class Web extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->load->model('m_data');
+    }
+    public function user()
+    {
+        //$data['user']= $this->m_data->ambil_data()->result();
+        $data=array(
+            'user' => $this->m_data->ambil_data()->result(),
+            'judul' => "Daftar User"
+        );
+        $this->load->view('v_header',$data);
+        $this->load->view('v_user',$data);
+        $this->load->view('v_footer',$data);
     }
     
     public function index()
